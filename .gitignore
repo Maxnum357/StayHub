@@ -1,0 +1,14 @@
+# Local customer data and private configuration
+data/
+output/
+*.log
+*-config.json
+access-token
+setup-key
+card-browser-profile/
+
+# Compiled binaries are distributed as GitHub Release assets
+runtime/node.exe
+StayHub.exe
+StayHub-Setup-*.exe
+*.zip

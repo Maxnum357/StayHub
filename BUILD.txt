@@ -1,0 +1,15 @@
+Rebuild on Windows x64:
+1. Keep app/, runtime/node.exe, runtime/NOTICE.txt and other LICENSE notices.
+2. Compile Launcher.cs with .NET Framework 4.x csc.exe:
+   csc /target:winexe /out:StayHub.exe /win32icon:StayHub.ico /reference:System.Windows.Forms.dll /reference:System.Drawing.dll Launcher.cs
+3. Install NSIS 3.x from https://nsis.sourceforge.io/Download
+4. In this directory run: makensis installer.nsi
+5. Test a clean install in an isolated directory/Windows VM, then sign the
+   launcher and installer using the publisher's code signing certificate.
+
+Do not copy data/, browser profiles, access tokens, merchant QR payloads or
+Google credentials from a working customer machine into the app/ directory.
+The app reads %LOCALAPPDATA%\StayHub\data, not its install directory.
+For automated tests set STAYHUB_DATA_DIR to an isolated test directory,
+STAYHUB_PORT to an unused port and STAYHUB_NO_WATCHER=1.
+Keep NSIS and Windows .NET compiler outside the redistributable payload.

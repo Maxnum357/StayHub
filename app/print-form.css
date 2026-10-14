@@ -1,0 +1,21 @@
+@media print {
+ #document.rental-sheet {padding:0;font:12px Tahoma,sans-serif;line-height:1.35;color:#111;}
+ #document.rental-sheet p{margin:4px 0;}
+ .rental-sheet .print-title{text-align:center;font-size:24px;margin:0;}
+ .rental-sheet .print-subtitle{text-align:center;margin:2px 0!important;}
+ .rental-sheet .print-intro{margin:10px 0!important;font-size:11px;}
+ .rental-sheet .print-section{font-size:14px;border-bottom:1px solid #333;margin:9px 0 5px;padding-bottom:3px;}
+ .print-fields{display:flex;flex-wrap:wrap;}
+ .print-fields.has-photo{position:relative;padding-right:32mm;min-height:38mm;}
+ .card-portrait{position:absolute;top:4px;right:0;width:28mm;height:36mm;object-fit:contain;border:1px solid #aaa;}
+ .print-field{width:50%;padding:4px 10px 4px 0;overflow-wrap:break-word;}
+ .print-field.wide{width:100%;}
+ .print-label{font-weight:bold;font-size:11px;display:block;}
+ .print-value{display:block;border-bottom:1px dotted #aaa;min-height:18px;}
+ .print-time{font-size:12px;}
+ .print-charge{border:1px solid #333;padding:8px 12px;margin:9px 0;display:flex;justify-content:space-between;}
+ .print-signatures{display:flex;break-inside:avoid;margin-top:12px;text-align:center;}
+ .print-signatures>div{width:50%;}
+ .print-signatures .signature,.manual-signature{height:58px;max-width:220px;}
+ #document.rental-sheet .print-footer{font-size:9px;border-top:1px solid #aaa;padding-top:6px;margin-top:12px!important;}
+}

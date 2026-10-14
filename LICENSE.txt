@@ -1,0 +1,19 @@
+StayHub 1.0.0 - installation preview
+Copyright 2026. All rights reserved for the application source and branding.
+This package is prepared for evaluation by the project owner. It does not grant
+rights to redistribute third-party brands, logos, contracts, or customer data.
+The owner must approve a commercial license and terms before commercial sale.
+
+Node.js is distributed under the MIT license and contains third-party components.
+See runtime/NOTICE.txt for the complete notices supplied by the runtime.
+qrcode-generator is Copyright (c) 2009 Kazuhiko Arase, MIT licensed.
+See app/vendor/qrcode-generator.js for its license notice.
+jsQR is Apache-2.0 licensed. See app/vendor/jsQR-LICENSE.txt.
+The installer is produced with NSIS, zlib/libpng licensed; zlib compression.
+
+No existing customer records, account credentials, Google destinations,
+payment QR payloads, or private browser profiles are included.
+Google features require the owner's Google account, permissions, internet,
+and Apps Script deployment. Google service quotas apply.
+The installer is unsigned. Publisher signing and clean Windows machine testing
+are required before a public commercial release.

@@ -1,0 +1,29 @@
+StayHub 1.0.0 installation preview — 2026-10-15
+
+PASS: NSIS installer compiles without warnings.
+PASS: Silent installation to isolated workspace directory, exit 0.
+PASS: App server started using installed runtime and isolated empty data.
+PASS: Settings API rejects incorrect setup key.
+PASS: Setup rejects duplicate rooms; PIN is stored as salted scrypt hash.
+PASS: Settings config API does not expose PIN hash/salt.
+PASS: Generated Apps Script parses and contains configured sample property.
+PASS: Headless Microsoft Edge setup and main UI; no page script errors.
+PASS: Six configured rooms and configured nightly price loaded correctly.
+PASS: Initial confirmed records list empty.
+PASS: Online record saves without choosing cash/transfer.
+PASS: Mocked Google sync sends record for cloud PDF without Python.
+PASS: Uninstaller removes installed app, exit 0; external data path is not
+      targeted by the uninstaller.
+PASS: Bundled node.exe Authenticode signature Valid, OpenJS Foundation.
+PASS: Curated package excludes data, browser profiles, original merchant QR,
+      previous property's images, Google destinations and previous contracts.
+
+NOT VERIFIED: Fresh Windows VM install, physical card-reader driver on other
+PCs, actual Google deployment using a new customer's account, real bank
+payment scanning, tablet companion APK configuration on a new LAN.
+Launcher/installer are not publisher-signed. This is an installation preview,
+not an approved commercial release. The original live Sanshine installation
+was not changed or restarted by this packaging task.
+
+Installer SHA256:
+6AAD87840E64DAFF2102BE770FA7BA2D85DADD8B65C18E9D76531240B4705CC5
