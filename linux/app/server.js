@@ -146,6 +146,7 @@ http.createServer(async(req,res)=>{
  if(req.method === 'POST' && url.pathname === '/api/records') {
  let body=''; for await(const chunk of req){body+=chunk;if(body.length>6500000) return reply(res,413,{error:'ข้อมูลใหญ่เกินกำหนด'});}
  const r=JSON.parse(body);
+ if(!['รายวัน','รายเดือน'].includes(r.type))return reply(res,400,{error:'ประเภทการเช่าไม่ถูกต้อง'});
  if(r.cardImageData){if(!/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(r.cardImageData)||r.cardImageData.length>4500000)return reply(res,400,{error:'รูปบัตรไม่ถูกต้อง'});if(r.type!=='รายวัน'||r.identitySource!=='uploaded-card-image'||r.identityReviewed!==true||typeof r.identityReviewer!=='string'||!r.identityReviewer.trim()||r.identityReviewer.length>100)return reply(res,400,{error:'กรุณาให้พนักงานตรวจรูปบัตรและยืนยันข้อมูล'});r.identityReviewedAt=new Date().toISOString();}
 
  if(r.photo&&!/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(r.photo))return reply(res,400,{error:'รูปบัตรไม่ถูกต้อง'});

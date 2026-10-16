@@ -23,7 +23,7 @@ async function request(route,body,extra={}){return fetch(base+route,{method:body
   r=await request('/api/card-bridge/result',{requestId:next.request.requestId,result:{id,name:'Test Customer',address:'Test'}},headers);assert.equal((await r.json()).ok,true);
   assert.equal((await (await cardRead).json()).id,id);
   const signature='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/lS8AAAAASUVORK5CYII=';
-  const record={type:'à¸£à¸²à¸¢à¸§à¸±à¸™',id,name:'Test Customer',address:'Test address',birth:'1990-01-01',issue:'2020-01-01',expiry:'2030-01-01',phone:'0000000000',room:'101, 102',rooms:['101','102'],roomCount:2,checkin:'2026-10-16',checkout:'2026-10-18',rate:500,depositPaid:500,payment:'à¹€à¸‡à¸´à¸™à¸ªà¸”',channel:'Walk-in',tenantSignature:signature};
+  const record={type:'รายวัน',id,name:'Test Customer',address:'Test address',birth:'1990-01-01',issue:'2020-01-01',expiry:'2030-01-01',phone:'0000000000',room:'101, 102',rooms:['101','102'],roomCount:2,checkin:'2026-10-16',checkout:'2026-10-18',rate:500,depositPaid:500,payment:'เงินสด',channel:'Walk-in',tenantSignature:signature};
   r=await request('/api/records',record,headers);assert.equal(r.status,201);const saved=await r.json();assert.equal(saved.balanceDue,1500);
   r=await request('/api/records',null,headers);assert.equal((await r.json()).length,1);
   assert.ok(fs.existsSync(path.join(data,'records.json')));
