@@ -28,6 +28,17 @@ jobs:
         env:
           STAYHUB_TEST_PYTHON: python
         run: node linux/tests/smoke.cjs
+      - name: Test actual installer and systemd service
+        run: |
+          sudo sh linux/install.sh
+          curl --fail http://127.0.0.1:8787/healthz
+          sudo systemctl is-active --quiet stayhub
+          before=$(sudo sha256sum /var/lib/stayhub/access-token)
+          sudo sh linux/install.sh
+          after=$(sudo sha256sum /var/lib/stayhub/access-token)
+          test "$before" = "$after"
+          sudo stayhubctl backup
+          sudo systemctl is-active --quiet stayhub
       - name: Package Linux installer
         run: |
           mkdir -p dist
