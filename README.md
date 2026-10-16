@@ -1,3 +1,25 @@
+# stayhub
+
+ระบบลงทะเบียนผู้เข้าพักสำหรับคอม, iPad และจอ L01
+
+## Linux Server v0.3.0
+
+ตัวติดตั้ง systemd สำหรับ Ubuntu/Debian 64 บิต พร้อมหน้า Setup, Google Drive/Sheets, PDF Canva รุ่นปัจจุบัน และ Windows USB card bridge
+
+```sh
+gh auth login
+gh repo clone Maxnum357/StayHub stayhub
+cd stayhub
+sudo sh linux/install.sh
+sudo stayhubctl links
+```
+
+Repository เป็น private ต้องมีสิทธิ์ก่อนติดตั้ง ดู [คู่มือ Linux ฉบับเต็ม](linux/README.md) และ [Release notes](linux/RELEASE-NOTES.md)
+
+ไฟล์ใน `linux/` เป็นรุ่นเซิร์ฟเวอร์ปัจจุบัน ส่วน `app/` และตัวติดตั้ง Windows ด้านล่างเป็นรุ่นเก่า ข้อมูลลูกค้าและค่าลับไม่ได้รวมอยู่ในชุดติดตั้ง
+
+---
+
 # StayHub
 
 โปรแกรมลงทะเบียนผู้เข้าพัก พร้อมตัวติดตั้ง Windows 10/11 x64 และหน้าตั้งค่าครั้งแรก

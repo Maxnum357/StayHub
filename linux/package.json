@@ -1,0 +1,13 @@
+{
+  "name": "stayhub",
+  "version": "0.3.0",
+  "private": true,
+  "description": "StayHub LAN registration server",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node app/server.js",
+    "test": "node tests/smoke.cjs"
+  }
+}

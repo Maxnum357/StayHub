@@ -12,3 +12,12 @@ runtime/node.exe
 StayHub.exe
 StayHub-Setup-*.exe
 *.zip
+
+# Linux runtime artifacts
+__pycache__/
+*.pyc
+.venv/
+venv/
+bridge-config.json
+*.tar.gz
+dist/

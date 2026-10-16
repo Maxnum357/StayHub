@@ -1,0 +1,14 @@
+@font-face{font-family:'Montserrat';src:url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Montserrat';src:url('/assets/fonts/Montserrat-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Noto Sans Thai';src:url('/assets/fonts/NotoSansThai-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Noto Sans Thai';src:url('/assets/fonts/NotoSansThai-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+body,header h1,button,input,select,textarea,table,th,td,label,h1,h2,h3,p,.note,.brand-reference-name,.brand-reference-name span,.brand-reference-name small,.customer-cash-status,#document,#document.rental-sheet,#document.monthly-contract{font-family:'Montserrat','Noto Sans Thai',sans-serif!important;}
+.qr-brand-wordmark,.qr-brand-wordmark span,[style*="Tahoma"],[style*="Georgia"]{font-family:Montserrat,"Noto Sans Thai",sans-serif!important;}
+
+.history-type-filters{display:flex;gap:8px;margin:8px 0 16px;flex-wrap:wrap}.history-type-filter{padding:8px 20px!important;min-width:100px;border:1px solid #b3955f!important;border-radius:8px!important;background:#fff8ea!important;color:#70501e!important}.history-type-filter[aria-pressed="true"]{background:#79571f!important;color:#fff!important;border-color:#79571f!important}.history-type-filter:focus-visible{outline:3px solid #bf9b55;outline-offset:2px}
+
+#history .history-action-tracked[data-used="false"]{background:#198347!important;border-color:#126a37!important;color:#fff!important}
+#history .history-action-tracked[data-used="false"]:hover{background:#126a37!important}
+#history .history-action-tracked[data-used="true"]{background:#d87313!important;border-color:#b95e0a!important;color:#fff!important}
+#history .history-action-tracked[data-used="true"]:hover{background:#b95e0a!important}
+#history .history-action-tracked:disabled{opacity:.7;cursor:wait}

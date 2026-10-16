@@ -1,0 +1,28 @@
+[Unit]
+Description=StayHub LAN registration server
+After=network.target
+
+[Service]
+Type=simple
+User=stayhub
+Group=stayhub
+WorkingDirectory=/opt/stayhub/current/app
+Environment=STAYHUB_DATA_DIR=/var/lib/stayhub
+Environment=STAYHUB_TEMPLATE_DIR=/var/lib/stayhub/templates
+Environment=RENTAL_PYTHON=/opt/stayhub/current/venv/bin/python
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONIOENCODING=utf-8
+Environment=HOME=/var/lib/stayhub
+EnvironmentFile=-/etc/stayhub/stayhub.env
+ExecStart=/opt/stayhub/node/bin/node /opt/stayhub/current/app/server.js
+Restart=on-failure
+RestartSec=3
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/stayhub
+
+[Install]
+WantedBy=multi-user.target

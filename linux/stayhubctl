@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+[ "$(id -u)" -eq 0 ] || { echo 'Run with sudo.' >&2; exit 1; }
+case "${1:-help}" in
+  status) systemctl status stayhub --no-pager;;
+  restart) systemctl restart stayhub;;
+  logs) journalctl -u stayhub -n 100 --no-pager;;
+  links)
+    /opt/stayhub/node/bin/node -e '
+      const fs=require("fs"),os=require("os");
+      const data="/var/lib/stayhub/",key=fs.readFileSync(data+"access-token","utf8").trim(),admin=fs.readFileSync(data+"setup-key","utf8").trim();
+      console.log("Setup (localhost or SSH tunnel): http://127.0.0.1:8787/setup?admin="+admin);
+      for(const group of Object.values(os.networkInterfaces()))for(const ip of group||[])if(ip.family==="IPv4"&&!ip.internal)console.log("LAN: http://"+ip.address+":8787/?key="+key);
+      console.log("Keep these access links private.");'
+    ;;
+  backup)
+    stamp=$(date -u +%Y%m%d-%H%M%S)
+    file="/var/lib/stayhub/backups/stayhub-$stamp.tar.gz"
+    active=0; systemctl is-active --quiet stayhub && active=1
+    if [ "$active" -eq 1 ]; then systemctl stop stayhub; fi
+    trap 'if [ "$active" -eq 1 ]; then systemctl start stayhub; fi' EXIT HUP INT TERM
+    tar --exclude='./backups' -czf "$file" -C /var/lib/stayhub .
+    chmod 600 "$file"
+    echo "Backup: $file (contains customer data and secrets; store securely)."
+    ;;
+  *) echo 'Usage: sudo stayhubctl {status|restart|logs|links|backup}';;
+esac

@@ -1,0 +1,40 @@
+name: StayHub Linux
+on:
+  push:
+    paths: ['linux/**', '.github/workflows/linux-release.yml']
+    tags: ['linux-v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  test-and-package:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF dependencies
+        run: python -m pip install -r linux/app/requirements.txt
+      - name: Verify installer and source integrity
+        run: |
+          sh -n linux/install.sh
+          sh -n linux/stayhubctl
+          cd linux && sha256sum -c SHA256SUMS
+      - name: Test Linux server, registration and PDF generation
+        env:
+          STAYHUB_TEST_PYTHON: python
+        run: node linux/tests/smoke.cjs
+      - name: Package Linux installer
+        run: |
+          mkdir -p dist
+          tar --exclude='__pycache__' --exclude='*.pyc' -czf dist/stayhub-linux-v0.3.0.tar.gz -C linux .
+          cd dist && sha256sum stayhub-linux-v0.3.0.tar.gz > stayhub-linux-v0.3.0.tar.gz.sha256
+      - name: Publish tagged installer
+        if: startsWith(github.ref, 'refs/tags/linux-v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --verify-tag --title "stayhub Linux Server v0.3.0" --notes-file linux/RELEASE-NOTES.md
