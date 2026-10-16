@@ -7,14 +7,12 @@
 ตัวติดตั้ง systemd สำหรับ Ubuntu/Debian 64 บิต พร้อมหน้า Setup, Google Drive/Sheets, PDF Canva รุ่นปัจจุบัน และ Windows USB card bridge
 
 ```sh
-gh auth login
-gh repo clone Maxnum357/StayHub stayhub
-cd stayhub
-sudo sh linux/install.sh
+curl -fsSL https://raw.githubusercontent.com/Maxnum357/StayHub/main/install.sh -o stayhub-install.sh
+sudo sh stayhub-install.sh
 sudo stayhubctl links
 ```
 
-Repository เป็น private ต้องมีสิทธิ์ก่อนติดตั้ง ดู [คู่มือ Linux ฉบับเต็ม](linux/README.md) และ [Release notes](linux/RELEASE-NOTES.md)
+ดาวน์โหลดผ่านลิงก์สาธารณะได้โดยไม่ต้องล็อกอิน GitHub ดู [คู่มือ Linux ฉบับเต็ม](linux/README.md) และ [Release notes](linux/RELEASE-NOTES.md)
 
 ไฟล์ใน `linux/` เป็นรุ่นเซิร์ฟเวอร์ปัจจุบัน ส่วน `app/` และตัวติดตั้ง Windows ด้านล่างเป็นรุ่นเก่า ข้อมูลลูกค้าและค่าลับไม่ได้รวมอยู่ในชุดติดตั้ง
 

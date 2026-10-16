@@ -6,15 +6,15 @@
 
 รองรับ Ubuntu 22.04 ขึ้นไป / Debian 12 ขึ้นไปแบบ 64 บิต x86_64 หรือ ARM64 ที่ใช้ systemd ต้องมีอินเทอร์เน็ตในการติดตั้งและสิทธิ์ sudo
 
-Repository นี้เป็น **private** ต้องล็อกอิน GitHub ด้วยบัญชีที่ได้รับสิทธิ์ก่อน ไม่ต้องเปลี่ยนเป็น public และไม่ต้องใส่ token ลงในลิงก์
+ติดตั้งจากตัวดาวน์โหลดสาธารณะ ไม่ต้องล็อกอิน GitHub:
 
 ```sh
-gh auth login
-gh repo clone Maxnum357/StayHub stayhub
-cd stayhub
-sudo sh linux/install.sh
+curl -fsSL https://raw.githubusercontent.com/Maxnum357/StayHub/main/install.sh -o stayhub-install.sh
+sudo sh stayhub-install.sh
 sudo stayhubctl links
 ```
+
+ตัวดาวน์โหลดตรวจ SHA-256 ของ Release v0.3.0 ก่อนแตกไฟล์และติดตั้ง หากไม่มี curl ให้ติดตั้งด้วย `sudo apt update && sudo apt install -y curl` ก่อน
 
 หรือใช้ Git ที่ล็อกอินแล้ว: `git clone https://github.com/Maxnum357/StayHub.git stayhub`
 
